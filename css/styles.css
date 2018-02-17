@@ -1,0 +1,210 @@
+/*-------------Стили для страницы United.html-------------------*/
+body {
+	background-color: #6b0300;
+	color: #ffffff;
+	font-family: sans-serif,Verdana,Times;
+	background-image: url(../images/old-trafford-1959155_1920.jpg);
+	width: 99%;
+	background-attachment:fixed;
+}
+
+
+
+
+.container{
+	width: 1300px;
+	margin: 0 auto;
+}
+
+
+
+
+.menu{
+	float:left;
+	width:240px;
+	display: inline-block;
+}
+.menu p{
+	border-style: outset;
+	width: 170px;
+	margin-left:  20px;
+}
+.menu a{
+	color: #ffffff;
+	font-size: 19px;
+	text-decoration: none;
+	margin-left: 5px;
+
+}
+.menu_buttons input{
+	width:190px;
+	height: 40px;
+	margin-bottom: 20px;
+	margin-left: 20px;
+	font-family: sans-serif,Verdana;
+	font-size: 19px;
+	padding: 5px;
+	background-color: white;
+	border-radius: 5px;
+}
+
+.to_top {
+	margin-top: 580px;
+}
+
+.menu_buttons button{
+	background-color: rgba(73,0,0,0.5);
+}
+
+
+
+
+
+.info{
+	float:left;
+	width: 700px;
+	text-align: justify;
+	display: inline-block; 
+	font-size: 17px;
+	background :rgba(0,0,0,0.5);
+	padding-right: 30px;
+	padding-left: 30px;
+}
+.info h1{
+	text-align: center;
+	font-size: 50px;
+}
+.info a{
+	margin-bottom: 20px;
+}
+
+
+
+
+
+
+.scoreboard{
+	float:   left;
+	width:   260px;
+	height:  460px;
+	display: inline-block;
+	margin-left: 30px;
+	background-color: rgba(0,0,0,0.5);
+}
+.scoreboard .sc_head {
+	font-size: 30px;
+	font-weight: bold;
+	text-align: center;
+	background: rgba(73,0,0,0.5);
+	padding: 7px;
+}
+.scoreboard .table{
+	font-size: 20px;
+}
+.nextmatch{
+	background-color: rgba(0,0,0,0.5);
+	padding-bottom: 30px;
+}
+
+.nextmatch p{
+	font-size: 25px;
+	font-weight: bold;
+	text-align: center;
+	background-color: rgba(73,0,0,0.5);	
+}
+
+.nextmatch .date{
+	font-size: 20px;
+}
+
+.nextmatch .vote{
+	width:  190px;
+	height: 40px;
+	margin-left:   5px;
+	font-family: sans-serif,Verdana;
+	font-size: 19px;
+	padding:   5px;
+	background-color: white;
+	border-radius: 5px;
+	margin-top:    15px;
+}
+
+
+
+
+
+
+
+.copy{
+	width: 1250px;
+	background-color: rgba(0,0,0,0.5);
+	display: inline;
+}
+.logo{
+	width:  190px;
+	height: 190px;
+	padding-left:  13px;
+	padding-top:   10px;
+	margin-bottom: 50px;
+}
+.banner0,.banner1,.troph,.players{
+	width: 		700px;
+	text-align: center;
+	overflow: 	hidden;
+}
+.opponent{
+	width:  156px;
+	height: 190px;
+	margin-left:   50px;
+	margin-bottom: 20px;
+}
+
+
+/*-------------Стили для страницы Squad.html-------------------*/
+table.squad
+{
+	align-items: center;
+	padding: 5px;
+	width: 100%;
+}
+
+table.squad thead{
+	background-color: rgb(73,0,0);
+	height: 45px;
+}
+
+table.squad td, table.squad th{
+	border: 0px solid #ffffff;
+	padding: 3px 2px;
+}
+
+table.squad tr{
+	text-align: center;
+}
+
+
+/*-------------Стили для страницы Schedule.html-------------------*/
+table.games
+{
+	align-items: center;
+	padding: 5px;
+	width: 100%;
+}
+
+table.games thead{
+	background-color: rgb(73,0,0);
+	height: 45px;
+}
+
+table.games td, table.games th{
+	border: 0px solid #ffffff;
+	padding: 3px 2px;
+}
+
+table.games tr{
+	text-align: left;
+}
+
+.ab p{
+	font-size: 25px;
+}

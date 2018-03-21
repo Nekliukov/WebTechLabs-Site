@@ -2,7 +2,10 @@
 
 function get_struct($dir){
     $fileList = glob("$dir/*");
-    foreach($fileList as $filename){ 
+
+    foreach($fileList as $filename){
+       $ext = substr(strrchr($filename,'.'),1);
+       show_img($ext);
        if (is_dir($filename)){
             echo $filename. "<span style=\"font-weight: bold;\">| Size:</span>" , get_dir_size($filename)/1000, ' KB',
             "<span style=\"font-weight: bold;\"> Edited:</span>".date ("F d Y H:i:s.", filemtime($filename)),
@@ -14,8 +17,7 @@ function get_struct($dir){
             echo $filename. "<span style=\"font-weight: bold;\">| Size:</span>".filesize($filename)/1000, ' KB',
             "<span style=\"font-weight: bold;\"> Created:</span>".date ("F d Y H:i:s.", filectime($filename)),
             "<span style=\"font-weight: bold;\"> Edited:</span>".date ("F d Y H:i:s.", filemtime($filename)),
-            "<span style=\"font-weight: bold;\"> Used:</span>".date ("F d Y H:i:s.", fileatime($filename)),'</br>';
-            $ext = substr(strrchr($filename,'.'),1);
+            "<span style=\"font-weight: bold;\"> Used:</span>".date ("F d Y H:i:s.", fileatime($filename)),'</br>';           
             if ($ext=='txt' || $ext == 'docx'){
                 $handle = fopen($filename, "rb");
                 $contents = fread($handle, 100);
@@ -41,7 +43,7 @@ function get_pic_size ($dir){
         if (is_dir($filename))
             $pic_size+=get_pic_size($filename);
         $ext = substr(strrchr($filename,'.'),1);
-        if ($ext=='jpg' || $ext == 'png' || $ext=='jpeg'){
+        if ($ext=='jpg' || $ext == 'png' || $ext=='jpeg' || $ext=='ico'){
             $pic_size+=filesize($filename);}
     }
     return $pic_size;
@@ -49,6 +51,16 @@ function get_pic_size ($dir){
 
 function get_part($addr){
     return round(get_pic_size($addr)*100/get_dir_size($addr), 2);
+}
+
+function show_img($ext){
+    if ($ext=='png' || $ext=='jpeg' || $ext=='jpg' || $ext=='ico')
+        echo '<img src="img.png" width="20px" height="20px">';
+    else if ($ext=='txt' || $ext == 'docx')
+        echo '<img src="text.png" width="20px" height="20px">';
+    else 
+        echo '<img src="file.png" width="20px" height="20px">';
+
 }
 
 

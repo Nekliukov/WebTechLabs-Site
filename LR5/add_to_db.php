@@ -1,7 +1,7 @@
 <?php
     require_once 'LR5.html';
     require_once 'connection.php'; // подключаем скрипт
-    // подключаемся к серверу
+
     $pattern = '/^(?!(?:(?:\\x22?\\x5C[\\x00-\\x7E]\\x22?)|(?:\\x22?[^\\x5C\\x22]\\x22?)){255,})(?!(?:(?:\\x22?\\x5C[\\x00-\\x7E]\\x22?)|(?:\\x22?[^\\x5C\\x22]\\x22?)){65,}@)(?:(?:[\\x21\\x23-\\x27\\x2A\\x2B\\x2D\\x2F-\\x39\\x3D\\x3F\\x5E-\\x7E]+)|(?:\\x22(?:[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x21\\x23-\\x5B\\x5D-\\x7F]|(?:\\x5C[\\x00-\\x7F]))*\\x22))(?:\\.(?:(?:[\\x21\\x23-\\x27\\x2A\\x2B\\x2D\\x2F-\\x39\\x3D\\x3F\\x5E-\\x7E]+)|(?:\\x22(?:[\\x01-\\x08\\x0B\\x0C\\x0E-\\x1F\\x21\\x23-\\x5B\\x5D-\\x7F]|(?:\\x5C[\\x00-\\x7F]))*\\x22)))*@(?:(?:(?!.*[^.]{64,})(?:(?:(?:xn--)?[a-z0-9]+(?:-+[a-z0-9]+)*\\.){1,126}){1,}(?:(?:[a-z][a-z0-9]*)|(?:(?:xn--)[a-z0-9]+))(?:-+[a-z0-9]+)*)|(?:\\[(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){7})|(?:(?!(?:.*[a-f0-9][:\\]]){7,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,5})?)))|(?:(?:IPv6:(?:(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){5}:)|(?:(?!(?:.*[a-f0-9]:){5,})(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3})?::(?:[a-f0-9]{1,4}(?::[a-f0-9]{1,4}){0,3}:)?)))?(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))(?:\\.(?:(?:25[0-5])|(?:2[0-4][0-9])|(?:1[0-9]{2})|(?:[1-9]?[0-9]))){3}))\\]))$/iD';
 
     if(preg_match($pattern, $_POST['email'])){
@@ -9,13 +9,30 @@
         or die("Error " . mysqli_error($link));
         
         $newemail = htmlentities(mysqli_real_escape_string($link, $_POST['email']));
+        $queryadd ="INSERT INTO email VALUES(NULL,'$newemail')";
+        $queryopen = "SELECT * FROM email";
 
-        $query ="INSERT INTO email VALUES('$newemail')";
-        $result = mysqli_query($link, $query) or die("Error " . mysqli_error($link)); 
-        if($result){
-            echo "<span style='color:blue;'>New data added</span><br>";
-        }
-
+        $resultopen=mysqli_query($link,$queryopen)
+        or die("Error ".mysqli_error($link)); // запрос на выборку
+        $rows = mysqli_num_rows($resultopen); // количество получ. строк
+ 
+        $exist = false; 
+        if($resultopen){
+            for ($i = 0 ; $i < $rows ; ++$i){
+               $row = mysqli_fetch_row($resultopen);
+               for ($j = 1 ; $j < 2 ; ++$j)
+                   if ($newemail == $row[$j])
+                        $exist = true;
+           }
+           if(!$exist){
+                if ($resultadd = mysqli_query($link, $queryadd) or 
+                die("Error " . mysqli_error($link)))
+                    echo "<span style='color:blue;'>Email has been added</span><br>";
+           }
+           else
+                echo "<span style='color:red;'>Error: This e-mail already exists</span><br>";
+           mysqli_free_result($resultopen);
+       }
         mysqli_close($link);
     }
     else

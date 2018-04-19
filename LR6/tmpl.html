@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="style6.css">
+    <head>
+        <meta charset="UTF-8">
+        <title>LR6</title>
+    </head>
+    <body class="main">
+        <form action="LR6.php" method="POST">
+            {AllProducts}
+        </form>   
+
+        <form action="LR6.php" method="POST">
+            <table>
+                <input name="element">
+                <input type="submit" name="button_find" value="Find Product">
+                {FoundElement}
+            </table>
+        </form>   
+
+        <form action="LR6.php" method="POST">
+            </br><table>
+                <tr><td>Product<td><input name="product">
+                <tr><td>Amount<td><input name="amount">
+                <tr><td>Cost $<td><input name="cost">
+                <input type="submit" name="button" value="Add Product">
+            </table>
+        </form>   
+
+    </body>
+    
+</html>

@@ -9,10 +9,10 @@
         or die("Error " . mysqli_error($link));
         
         $newemail = htmlentities(mysqli_real_escape_string($link, $_POST['email']));
-        $queryadd ="INSERT INTO email VALUES(NULL,'$newemail')";
+        $queryadd ="INSERT INTO email VALUES(NULL,'$newemail')"; 
         $queryopen = "SELECT * FROM email";
 
-        $resultopen=mysqli_query($link,$queryopen)
+        $resultopen=mysqli_query($link,$queryopen);
         or die("Error ".mysqli_error($link)); // запрос на выборку
         $rows = mysqli_num_rows($resultopen); // количество получ. строк
  
@@ -30,7 +30,7 @@
                     echo "<span style='color:blue;'>Email has been added</span><br>";
            }
            else
-                echo "<span style='color:red;'>Error: This e-mail already exists</span><br>";
+                echo "<span style='color:red;'>Error: This e-mail is already exists</span><br>";
            mysqli_free_result($resultopen);
        }
         mysqli_close($link);

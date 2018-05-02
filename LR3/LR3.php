@@ -7,23 +7,23 @@ function get_struct($dir){
        $ext = substr(strrchr($filename,'.'),1);
        show_img($ext);
        if (is_dir($filename)){
-            echo $filename. "<span style=\"font-weight: bold;\">| Size:</span>" , get_dir_size($filename)/1000, ' KB',
-            "<span style=\"font-weight: bold;\"> Edited:</span>".date ("F d Y H:i:s.", filemtime($filename)),
-            "<span style=\"font-weight: bold;\"> Created:</span>".date ("F d Y H:i:s.", filectime($filename)),
-            "<span style=\"font-weight: bold;\"> Used:</span>".date ("F d Y H:i:s.", fileatime($filename)),'</br>';
+            echo $filename.'</br>',"<span style=\"font-weight: bold;\">Size:</span>" , get_dir_size($filename)/1000, ' KB'.'</br>',
+            "<span style=\"font-weight: bold;\"> Edited:</span>".date ("F d Y H:i:s.", filemtime($filename)).'</br>',
+            "<span style=\"font-weight: bold;\"> Created:</span>".date ("F d Y H:i:s.", filectime($filename)).'</br>',
+            "<span style=\"font-weight: bold;\"> Used:</span>".date ("F d Y H:i:s.", fileatime($filename)),'</br></br>';
             get_struct($filename);
         }
         else {
-            echo $filename. "<span style=\"font-weight: bold;\">| Size:</span>".filesize($filename)/1000, ' KB',
-            "<span style=\"font-weight: bold;\"> Created:</span>".date ("F d Y H:i:s.", filectime($filename)),
-            "<span style=\"font-weight: bold;\"> Edited:</span>".date ("F d Y H:i:s.", filemtime($filename)),
-            "<span style=\"font-weight: bold;\"> Used:</span>".date ("F d Y H:i:s.", fileatime($filename)),'</br>';           
+            echo $filename.'</br>'."<span style=\"font-weight: bold;\">Size:</span>".filesize($filename)/1000, ' KB'.'</br>',
+            "<span style=\"font-weight: bold;\"> Created:</span>".date ("F d Y H:i:s.", filectime($filename)).'</br>',
+            "<span style=\"font-weight: bold;\"> Edited:</span>".date ("F d Y H:i:s.", filemtime($filename)).'</br>',
+            "<span style=\"font-weight: bold;\"> Used:</span>".date ("F d Y H:i:s.", fileatime($filename)),'</br></br>';           
             if ($ext=='txt' || $ext == 'docx'){
                 $handle = fopen($filename, "rb");
                 $contents = fread($handle, 100);
                 echo"<p style=\"color: red;\"> $contents </p>";
                 fclose($handle);
-            }
+            }         
         }
     }
 }

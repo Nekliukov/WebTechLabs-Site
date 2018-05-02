@@ -8,7 +8,10 @@ body {
 	background-attachment:fixed;
 }
 
-
+.test{
+	font-family: Times New Roman;
+	color:red;
+}
 
 
 .container{
@@ -64,7 +67,6 @@ body {
 	float:left;
 	width: 700px;
 	text-align: justify;
-	display: inline-block; 
 	font-size: 17px;
 	background :rgba(0,0,0,0.5);
 	padding-right: 30px;
@@ -160,7 +162,7 @@ body {
 }
 
 
-/*-------------Стили для страницы Squad.html-------------------*/
+/*-------------Стили для страницы Squad.php-------------------*/
 table.squad
 {
 	align-items: center;
@@ -183,7 +185,7 @@ table.squad tr{
 }
 
 
-/*-------------Стили для страницы Schedule.html-------------------*/
+/*-------------Стили для страницы Schedule.php-------------------*/
 table.games
 {
 	align-items: center;
@@ -207,4 +209,28 @@ table.games tr{
 
 .ab p{
 	font-size: 25px;
+}
+
+/*-------------Стили для страницы Shop.php-------------------*/
+.shop{
+	display: flex;
+	flex-direction: column;
+}
+
+.shop .pair{
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 40px;
+}
+
+.shop .item{
+	background: grey;
+	margin-right:10%;
+	margin-left: 5%;
+	width: 40%;
+	text-align: center;
+}
+
+.shop .item img{
+	height: 270px;
 }

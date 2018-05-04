@@ -234,3 +234,7 @@ table.games tr{
 .shop .item img{
 	height: 270px;
 }
+
+.IPS td{
+	padding-right: 100px;
+}
